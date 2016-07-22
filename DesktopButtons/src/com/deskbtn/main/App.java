@@ -24,10 +24,12 @@ public class App {
 	
 	
 	public static FrameSettings frameSettings = new FrameSettings();
+
+	public static SerializeSaves SAVES = SerializeSaves.getSAVES();
 	
 	public static TranslucentWindow window = new TranslucentWindow();
 	
-	public static SerializeSaves SAVES = SerializeSaves.getSAVES();
+
 	
 	public static void main(String[] args) {
 		
