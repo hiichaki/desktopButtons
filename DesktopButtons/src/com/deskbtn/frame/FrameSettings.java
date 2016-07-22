@@ -1,4 +1,4 @@
-package com.deskbtn.main;
+package com.deskbtn.frame;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -14,8 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import com.deskbtn.main.App;
 import com.deskbtn.model.RoundButton;
-
 
 /*
  * frame which creates buttons
@@ -41,7 +41,7 @@ public class FrameSettings extends JFrame {
 			ex.getStackTrace();
 		}
 
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 490, 335);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -61,7 +61,7 @@ public class FrameSettings extends JFrame {
 			}
 
 		});
-		
+
 		browseFileButton.setBounds(123, 91, 89, 23);
 		contentPane.add(browseFileButton);
 
@@ -153,50 +153,52 @@ public class FrameSettings extends JFrame {
 
 	private void createDirectoryButton() {
 		RoundButton tmpButton = new RoundButton();
-		
+
 		tmpButton.addActionListener(event -> {
 			try {
 				Desktop.getDesktop().open(file);
-				
+
 			} catch (Exception ex) {
 				ex.getStackTrace();
 			}
 		});
-		
+
 		try {
 			App.SAVES.addSave(file.getPath());
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-//		App.window.addButton(tmpButton);
+		// App.window.addButton(tmpButton);
 		App.window.clear();
 		load();
 	}
 
 	private void load() {
-		App.window.clear();
-		try {
-			ArrayList<String> loadFiles = App.SAVES.getSave();
-			Iterator<String> iter = loadFiles.iterator();
-			while (iter.hasNext()) {
-				File tmpFile = new File(iter.next());
+		if (App.isPathExists()) {
+			App.window.clear();
+			try {
+				ArrayList<String> loadFiles = App.SAVES.getSave();
+				Iterator<String> iter = loadFiles.iterator();
+				while (iter.hasNext()) {
+					File tmpFile = new File(iter.next());
 
-				System.out.println(tmpFile.getName());
-				RoundButton tmpRB = new RoundButton();
-				tmpRB.addActionListener(event -> {
-					try {
-						Desktop.getDesktop().open(tmpFile);
-					} catch (Exception ex) {
-						ex.getStackTrace();
-					}
-				});
-				App.window.addButton(tmpRB);
+					System.out.println(tmpFile.getName());
+					RoundButton tmpRB = new RoundButton();
+					tmpRB.addActionListener(event -> {
+						try {
+							Desktop.getDesktop().open(tmpFile);
+						} catch (Exception ex) {
+							ex.getStackTrace();
+						}
+					});
+					App.window.addButton(tmpRB);
 
+				}
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
 			}
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
 		}
 	}
 

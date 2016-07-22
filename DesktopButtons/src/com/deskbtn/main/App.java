@@ -1,7 +1,10 @@
 package com.deskbtn.main;
+import java.io.File;
+
+import com.deskbtn.frame.FrameSettings;
+import com.deskbtn.frame.TranslucentWindow;
 import com.deskbtn.model.MyTrayIcon;
 import com.deskbtn.model.SerializeSaves;
-import com.deskbtn.model.TranslucentWindow;
 
 public class App {
 	
@@ -28,6 +31,12 @@ public class App {
 	public static SerializeSaves SAVES;
 	
 	public static TranslucentWindow window;
+	
+	public static String pathString = "E://1.txt";
+	
+	public static boolean isPathExists() {
+		return new File (pathString).exists();
+	}
 	
 	
 	public static void main(String[] args) {

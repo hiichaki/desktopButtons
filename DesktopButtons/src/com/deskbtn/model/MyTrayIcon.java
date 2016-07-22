@@ -57,16 +57,18 @@ public class MyTrayIcon {
 
 		trayIcon.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (App.window.isVisible()) {
-					App.window.setVisible(false);
-				} else {
-					App.window.setVisible(true);
+				if (e.getButton()==MouseEvent.BUTTON1) {
+					if (App.window.isVisible()) {
+						App.window.setVisible(false);
+					} else {
+						App.window.setVisible(true);
+					}
 				}
 			}
 		});
 
 		trayIcon.displayMessage("title", "Application started!", TrayIcon.MessageType.INFO);
-		
+
 	}
 
 }
