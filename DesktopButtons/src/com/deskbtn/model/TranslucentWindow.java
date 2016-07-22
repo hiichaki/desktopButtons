@@ -1,20 +1,11 @@
 package com.deskbtn.model;
 
-import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Frame;
-import java.awt.Image;
-import java.awt.MenuItem;
-import java.awt.PopupMenu;
-import java.awt.SystemTray;
-import java.awt.TrayIcon;
-import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
-import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -50,7 +41,7 @@ public class TranslucentWindow extends JFrame {
 				} catch (ClassNotFoundException | IOException e) {
 					e.printStackTrace();
 				}
-
+				setDefaultCloseOperation(HIDE_ON_CLOSE);
 				this.setUndecorated(true);
 				// frame.setAlwaysOnTop(true);
 				this.setBackground(new Color(0, 0, 0, 0));

@@ -47,7 +47,6 @@ public class FrameSettings extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setVisible(true);
 
 		JButton browseFileButton = new JButton("Browse");
 		browseFileButton.addActionListener(e -> {

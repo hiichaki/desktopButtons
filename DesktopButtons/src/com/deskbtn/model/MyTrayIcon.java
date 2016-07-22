@@ -1,12 +1,15 @@
 package com.deskbtn.model;
 
 import java.awt.AWTException;
-import java.awt.Frame;
 import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
+import java.awt.Toolkit;
 import java.awt.TrayIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,7 +18,9 @@ import javax.imageio.ImageIO;
 import com.deskbtn.main.App;
 
 public class MyTrayIcon {
-	
+
+	private static String iconPath = "E:/1/icon32.png";
+
 	public static void initTrayIcon() {
 		if (!SystemTray.isSupported()) {
 			return;
@@ -23,17 +28,11 @@ public class MyTrayIcon {
 
 		PopupMenu trayMenu = new PopupMenu();
 
-		MenuItem minimizeItem = new MenuItem("Minimize");
-		minimizeItem.addActionListener(e -> {
-			App.window.setState(Frame.ICONIFIED);
+		MenuItem settingsItem = new MenuItem("Settings");
+		settingsItem.addActionListener(e -> {
+			App.frameSettings.setVisible(true);
 		});
-		trayMenu.add(minimizeItem);
-
-		MenuItem normalizeItem = new MenuItem("Normalize");
-		minimizeItem.addActionListener(e -> {
-			App.window.setState(Frame.NORMAL);
-		});
-		trayMenu.add(normalizeItem);
+		trayMenu.add(settingsItem);
 
 		MenuItem exitItem = new MenuItem("Exit");
 		exitItem.addActionListener(e -> {
@@ -43,7 +42,7 @@ public class MyTrayIcon {
 
 		Image icon = null;
 		try {
-			icon = ImageIO.read(new File("E:/1/icon32.png"));
+			icon = ImageIO.read(new File(iconPath));
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
@@ -58,7 +57,17 @@ public class MyTrayIcon {
 			e.printStackTrace();
 		}
 
+		trayIcon.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (App.window.isVisible()) {
+					App.window.setVisible(false);
+				} else {
+					App.window.setVisible(true);
+				}
+			}
+		});
+
 		trayIcon.displayMessage("title", "Application started!", TrayIcon.MessageType.INFO);
 	}
-	
+
 }
