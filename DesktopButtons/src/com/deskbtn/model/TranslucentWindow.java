@@ -70,12 +70,20 @@ public class TranslucentWindow extends JFrame {
 
 	public void addButton(JButton btn) {
 		this.add(btn);
-		this.repaint();
-		this.revalidate();
+		refresh();
 	}
 	
 	public void clear() {
 		this.getContentPane().removeAll();
+		refresh();
+	}
+	
+	public void deleteButton(RoundButton btn) {
+		this.getContentPane().remove(btn);
+		refresh();
+	}
+	
+	private void refresh() {
 		this.repaint();
 		this.revalidate();
 	}

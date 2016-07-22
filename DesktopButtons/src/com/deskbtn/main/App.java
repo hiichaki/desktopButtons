@@ -23,14 +23,18 @@ public class App {
 	
 //	TODO: use created id for buttons  
 	
-	public static FrameSettings frameSettings = new FrameSettings();
+	public static FrameSettings frameSettings;
 
-	public static SerializeSaves SAVES = SerializeSaves.getSAVES();
+	public static SerializeSaves SAVES;
 	
-	public static TranslucentWindow window = new TranslucentWindow();
+	public static TranslucentWindow window;
 	
 	
 	public static void main(String[] args) {
+		frameSettings = new FrameSettings();
+		frameSettings.setVisible(true);
+		SAVES = SerializeSaves.getSAVES();
+		window = new TranslucentWindow();
 		MyTrayIcon.initTrayIcon();
 		
 	}

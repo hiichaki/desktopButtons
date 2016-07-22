@@ -32,7 +32,11 @@ public class SerializeSaves{
 	public void addSave(String file) throws IOException {
 		list.add(file);
 		setBytesIntoFile(convertToBytes(list));
-		
+	}
+	
+	public void delSave(String file) throws IOException {
+		list.remove(file);
+		setBytesIntoFile(convertToBytes(list));
 	}
 	
 	@SuppressWarnings("unchecked")

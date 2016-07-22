@@ -5,11 +5,9 @@ import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
-import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -68,6 +66,7 @@ public class MyTrayIcon {
 		});
 
 		trayIcon.displayMessage("title", "Application started!", TrayIcon.MessageType.INFO);
+		
 	}
 
 }

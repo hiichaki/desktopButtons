@@ -3,6 +3,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Shape;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.io.Serializable;
 
@@ -16,26 +19,36 @@ public class RoundButton extends JButton implements Serializable {
 	 */
 	private static final long serialVersionUID = 3824829552537309541L;
 	
-	private String test;
-	
-	public String getTest() {
-		return test;
-	}
-	
-	public void setTest(String s) {
-		test = s;
-	}
-	
 	public RoundButton() {
-
 		Dimension size = new Dimension(40, 40); //getPreferredSize();
 		size.width = size.height = Math.max(size.width, size.height);
 		setPreferredSize(size);
 
 		setContentAreaFilled(false);
+
+		this.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e){
+		        if (e.isPopupTrigger())
+		            doPop(e);
+		    }
+
+		    public void mouseReleased(MouseEvent e){
+		        if (e.isPopupTrigger())
+		            doPop(e);
+		    }
+
+		    private void doPop(MouseEvent e){
+		    	RoundBtnPopupMenu menu = new RoundBtnPopupMenu(getThis());
+		        menu.show(e.getComponent(), e.getX(), e.getY());
+		    }
+         });
 		
 	}
-
+	
+	private RoundButton getThis() {
+		return this;
+	}
+	
 	protected void paintComponent(Graphics g) {
 		if (getModel().isArmed()) {
 			g.setColor(Color.lightGray);
@@ -54,5 +67,6 @@ public class RoundButton extends JButton implements Serializable {
 		}
 		return shape.contains(x, y);
 	}
+	
 
 }

@@ -153,14 +153,16 @@ public class FrameSettings extends JFrame {
 
 	private void createDirectoryButton() {
 		RoundButton tmpButton = new RoundButton();
+		
 		tmpButton.addActionListener(event -> {
 			try {
 				Desktop.getDesktop().open(file);
+				
 			} catch (Exception ex) {
 				ex.getStackTrace();
 			}
 		});
-
+		
 		try {
 			App.SAVES.addSave(file.getPath());
 		} catch (Exception ex) {
