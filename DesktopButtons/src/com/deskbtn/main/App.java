@@ -1,6 +1,6 @@
 package com.deskbtn.main;
 import com.deskbtn.model.SerializeSaves;
-import com.deskbtn.model.TranscluentWindow;
+import com.deskbtn.model.TranslucentWindow;
 
 public class App {
 	
@@ -25,7 +25,7 @@ public class App {
 	
 	public static FrameSettings frameSettings = new FrameSettings();
 	
-	public static TranscluentWindow window = new TranscluentWindow();
+	public static TranslucentWindow window = new TranslucentWindow();
 	
 	public static SerializeSaves SAVES = SerializeSaves.getSAVES();
 	

@@ -13,11 +13,11 @@ import javax.swing.UIManager;
 import com.deskbtn.main.App;
 
 
-public class TranscluentWindow {
+public class TranslucentWindow {
 
 	private JWindow frame;
 	
-    public TranscluentWindow() {
+    public TranslucentWindow() {
         EventQueue.invokeLater(new Runnable() {
             
 			@Override
