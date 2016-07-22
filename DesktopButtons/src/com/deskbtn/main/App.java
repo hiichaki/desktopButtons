@@ -1,4 +1,5 @@
 package com.deskbtn.main;
+import com.deskbtn.model.MyTrayIcon;
 import com.deskbtn.model.SerializeSaves;
 import com.deskbtn.model.TranslucentWindow;
 
@@ -20,8 +21,7 @@ public class App {
 	 */
 		
 	
-//	TODO: use ceated id for buttons  
-	
+//	TODO: use created id for buttons  
 	
 	public static FrameSettings frameSettings = new FrameSettings();
 
@@ -29,12 +29,10 @@ public class App {
 	
 	public static TranslucentWindow window = new TranslucentWindow();
 	
-
 	
 	public static void main(String[] args) {
+		MyTrayIcon.initTrayIcon();
 		
 	}
-	
-	
 	
 }

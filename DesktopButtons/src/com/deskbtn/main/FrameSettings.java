@@ -16,6 +16,10 @@ import javax.swing.border.EmptyBorder;
 
 import com.deskbtn.model.RoundButton;
 
+
+/*
+ * frame which creates buttons
+ */
 public class FrameSettings extends JFrame {
 
 	/**
@@ -37,7 +41,7 @@ public class FrameSettings extends JFrame {
 			ex.getStackTrace();
 		}
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 490, 335);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -162,13 +166,15 @@ public class FrameSettings extends JFrame {
 			App.SAVES.addSave(file.getPath());
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println(ex.getMessage());
 		}
 
-		App.window.addButton(tmpButton);
+//		App.window.addButton(tmpButton);
+		App.window.clear();
+		load();
 	}
 
 	private void load() {
+		App.window.clear();
 		try {
 			ArrayList<String> loadFiles = App.SAVES.getSave();
 			Iterator<String> iter = loadFiles.iterator();

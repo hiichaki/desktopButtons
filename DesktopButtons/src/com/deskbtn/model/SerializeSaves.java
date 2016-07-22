@@ -19,6 +19,8 @@ public class SerializeSaves{
 	
 	private static SerializeSaves SAVES;
 	
+	private String pathString = "E://1.txt";
+	
 	private  SerializeSaves() {
 		list = new ArrayList<String>();
 	}
@@ -39,7 +41,7 @@ public class SerializeSaves{
 	}
 	
 	public byte[] getBytesFromFile() throws IOException {
-		Path path = Paths.get("E://1.txt");
+		Path path = Paths.get(pathString);
 		byte[] data = Files.readAllBytes(path);
 		return data;
 		
@@ -48,7 +50,7 @@ public class SerializeSaves{
 	public void setBytesIntoFile(byte[] byteArray) throws IOException {
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream("E://1.txt");
+			fos = new FileOutputStream(pathString);
 			fos.write(byteArray);
 			fos.close();
 		} catch (FileNotFoundException e) {

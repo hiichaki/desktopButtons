@@ -3,34 +3,33 @@ package com.deskbtn.model;
 import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
-import java.awt.Toolkit;
 import java.awt.TrayIcon;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JWindow;
 import javax.swing.UIManager;
 
 import com.deskbtn.main.App;
 
+/*
+ * frame with buttons
+ */
 public class TranslucentWindow extends JFrame {
 
-	// private JFrame this;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8531962971491318167L;
 
 	public TranslucentWindow() {
 	
@@ -52,7 +51,6 @@ public class TranslucentWindow extends JFrame {
 					e.printStackTrace();
 				}
 
-				// this = new JFrame();
 				this.setUndecorated(true);
 				// frame.setAlwaysOnTop(true);
 				this.setBackground(new Color(0, 0, 0, 0));
@@ -76,8 +74,6 @@ public class TranslucentWindow extends JFrame {
 
 				this.setLocationRelativeTo(null);
 				this.setVisible(true);
-
-				setTrayIcon();
 	
 	}
 
@@ -86,49 +82,11 @@ public class TranslucentWindow extends JFrame {
 		this.repaint();
 		this.revalidate();
 	}
-
-	private void setTrayIcon() {
-		if (!SystemTray.isSupported()) {
-			return;
-		}
-
-		PopupMenu trayMenu = new PopupMenu();
-
-		MenuItem minimizeItem = new MenuItem("Minimize");
-		minimizeItem.addActionListener(e -> {
-			this.setState(Frame.ICONIFIED);
-		});
-		trayMenu.add(minimizeItem);
-
-		MenuItem normalizeItem = new MenuItem("Normalize");
-		minimizeItem.addActionListener(e -> {
-			this.setState(Frame.NORMAL);
-		});
-		trayMenu.add(normalizeItem);
-
-		MenuItem exitItem = new MenuItem("Exit");
-		exitItem.addActionListener(e -> {
-			System.exit(0);
-		});
-		trayMenu.add(exitItem);
-
-		Image icon = null;
-		try {
-			icon = ImageIO.read(new File("E:/1/icon32.png"));
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-
-		TrayIcon trayIcon = new TrayIcon(icon, "some tooltip", trayMenu);
-		trayIcon.setImageAutoSize(true);
-
-		SystemTray tray = SystemTray.getSystemTray();
-		try {
-			tray.add(trayIcon);
-		} catch (AWTException e) {
-			e.printStackTrace();
-		}
-
-		trayIcon.displayMessage("title", "Application started!", TrayIcon.MessageType.INFO);
+	
+	public void clear() {
+		this.getContentPane().removeAll();
+		this.repaint();
+		this.revalidate();
 	}
+
 }
