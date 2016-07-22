@@ -13,7 +13,6 @@ import javax.swing.UIManager;
 import com.deskbtn.main.App;
 
 
-
 public class TranscluentWindow {
 
 	private JWindow frame;
@@ -46,6 +45,7 @@ public class TranscluentWindow {
 				frame.setAlwaysOnTop(true);
 				frame.setBackground(new Color(0,0,0,0));
 				TranslucentPane pane = new TranslucentPane();
+//				TestPane pane = new TestPane();
 				frame.setContentPane(pane);
 				frame.setSize(new Dimension(200, 400));
 				pane.setLayout(new FlowLayout());
