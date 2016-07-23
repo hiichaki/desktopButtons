@@ -1,5 +1,6 @@
 package com.deskbtn.frame;
 
+import java.awt.Component;
 import java.awt.Desktop;
 import java.io.File;
 import java.util.ArrayList;
@@ -73,7 +74,7 @@ public class FrameSettings extends JFrame {
 
 		createFileButton = new JButton("Create");
 		createFileButton.addActionListener(e -> {
-			RoundButton tmpButton = new RoundButton();
+			RoundButton tmpButton = new RoundButton(file.getPath());
 			tmpButton.addActionListener(event -> {
 				try {
 
@@ -147,17 +148,26 @@ public class FrameSettings extends JFrame {
 		});
 		loadButton.setBounds(174, 248, 89, 23);
 		contentPane.add(loadButton);
+
+		JButton testBtn = new JButton("test");
+		testBtn.addActionListener(e -> {
+			Component[] com = App.window.getContentPane().getComponents();
+			for (Component tmp : com) {
+				System.out.println(((RoundButton) tmp).getPath());
+			}
+		});
+		testBtn.setBounds(280, 248, 89, 23);
+		contentPane.add(testBtn);
 		repaint();
 		revalidate();
 	}
 
 	private void createDirectoryButton() {
-		RoundButton tmpButton = new RoundButton();
-
+		RoundButton tmpButton = new RoundButton(file.getPath());
+		// tmpButton.setPath(file.getPath());
 		tmpButton.addActionListener(event -> {
 			try {
 				Desktop.getDesktop().open(file);
-
 			} catch (Exception ex) {
 				ex.getStackTrace();
 			}
@@ -169,7 +179,6 @@ public class FrameSettings extends JFrame {
 			ex.printStackTrace();
 		}
 
-		// App.window.addButton(tmpButton);
 		App.window.clear();
 		load();
 	}
@@ -184,7 +193,7 @@ public class FrameSettings extends JFrame {
 					File tmpFile = new File(iter.next());
 
 					System.out.println(tmpFile.getName());
-					RoundButton tmpRB = new RoundButton();
+					RoundButton tmpRB = new RoundButton(tmpFile.getPath());
 					tmpRB.addActionListener(event -> {
 						try {
 							Desktop.getDesktop().open(tmpFile);

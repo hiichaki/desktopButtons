@@ -1,5 +1,7 @@
 package com.deskbtn.model;
 
+import java.awt.Color;
+
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.UIManager;
@@ -22,8 +24,18 @@ public class RoundBtnPopupMenu extends JPopupMenu {
 		JMenuItem deleteItem = new JMenuItem("Delete");
 		deleteItem.addActionListener(e -> {
 			App.window.deleteButton(btn);
+			App.SAVES.saveButtons();
 
 		});
+		JMenuItem testItem = new JMenuItem("Test");
+		testItem.addActionListener(e -> {
+			btn.setBackground(Color.RED);
+			App.window.refresh();
+
+		});
+		
+		this.add(testItem);
 		this.add(deleteItem);
+		
 	}
 }

@@ -3,7 +3,6 @@ package com.deskbtn.frame;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -33,6 +32,8 @@ public class TranslucentWindow extends JFrame {
 			ex.getStackTrace();
 		}
 
+		setDefaultCloseOperation(HIDE_ON_CLOSE);
+
 		try {
 			if (App.isPathExists()) {
 
@@ -44,10 +45,10 @@ public class TranslucentWindow extends JFrame {
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
-		setDefaultCloseOperation(HIDE_ON_CLOSE);
+
 		this.setUndecorated(true);
-		// frame.setAlwaysOnTop(true);
 		this.setBackground(new Color(0, 0, 0, 0));
+
 		TranslucentPane pane = new TranslucentPane();
 		this.setContentPane(pane);
 		this.setSize(new Dimension(200, 400));
@@ -73,7 +74,7 @@ public class TranslucentWindow extends JFrame {
 		refresh();
 	}
 
-	private void refresh() {
+	public void refresh() {
 		this.repaint();
 		this.revalidate();
 	}

@@ -1,7 +1,9 @@
 package com.deskbtn.model;
 
+import java.awt.Component;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,6 +11,7 @@ import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -83,6 +86,33 @@ public class SerializeSaves {
 
 	public static void setSAVES(SerializeSaves sAVES) {
 		SAVES = sAVES;
+	}
+	
+	public void saveButtons() {
+		clearFile();
+		list.clear();
+		
+		Component[] com = App.window.getContentPane().getComponents();
+		for (Component tmp : com) {
+			list.add(((RoundButton) tmp).getPath());
+		}
+		try {
+			setBytesIntoFile(convertToBytes(list));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private void clearFile() {
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(new File(App.pathString));
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		}
+		writer.print("");
+		writer.close();
 	}
 
 }
