@@ -35,6 +35,7 @@ public class FrameSettings extends JFrame {
 	private JTextField browseDirectoryField;
 
 	public FrameSettings() {
+		super("Settings");
 
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -197,7 +198,7 @@ public class FrameSettings extends JFrame {
 				while (iter.hasNext()) {
 					File tmpFile = new File(iter.next());
 
-//					System.out.println(tmpFile.getName());
+					// System.out.println(tmpFile.getName());
 					RoundButton tmpRB = new RoundButton(tmpFile.getPath());
 					tmpRB.addActionListener(event -> {
 						try {
@@ -227,8 +228,10 @@ public class FrameSettings extends JFrame {
 		double inRaw = App.windowWidth / 48.0;
 		double raws = Math.ceil(count / inRaw);
 		double height = raws * 50;
-		App.window.setSize(new Dimension(App.windowWidth, (int)height));
-		
+		if ((App.window.getY() + height) > App.screenHeight)
+			App.window.setLocation(App.window.getX(), App.window.getY() - 50);
+		App.window.setSize(new Dimension(App.windowWidth, (int) height));
+
 	}
 
 }

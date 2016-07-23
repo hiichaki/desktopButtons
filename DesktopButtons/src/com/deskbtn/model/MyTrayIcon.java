@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import com.deskbtn.frame.MoveFrame;
 import com.deskbtn.main.App;
 
 public class MyTrayIcon {
@@ -32,7 +33,7 @@ public class MyTrayIcon {
 		
 		MenuItem moveItem = new MenuItem("Move");
 		moveItem.addActionListener(e -> {
-			App.window.setUndecorated(false);
+			new MoveFrame().setVisible(true);;
 		});
 		trayMenu.add(moveItem);
 		

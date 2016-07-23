@@ -66,7 +66,7 @@ public class TranslucentWindow extends JFrame {
 		int height = (int) screenSize.getHeight();
 		int x = width - App.windowWidth;
 		int y = height / 3;
-		this.setBounds(x, y, width, 50);
+		this.setBounds(x, y, App.windowWidth, 50);
 
 	}
 

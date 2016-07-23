@@ -1,9 +1,12 @@
 package com.deskbtn.main;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.File;
 
 import com.deskbtn.frame.FrameSettings;
 import com.deskbtn.frame.TranslucentWindow;
 import com.deskbtn.model.MyTrayIcon;
+import com.deskbtn.model.Positioning;
 import com.deskbtn.model.SerializeSaves;
 
 public class App {
@@ -36,6 +39,10 @@ public class App {
 	
 	public static int windowWidth = 200;
 	
+	private  static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	public static int screenWidth = (int) screenSize.getWidth();
+	public static int screenHeight = (int) screenSize.getHeight();
+	
 	public static boolean isPathExists() {
 		return new File (pathString).exists();
 		
@@ -46,7 +53,7 @@ public class App {
 		frameSettings.setVisible(true);
 		SAVES = SerializeSaves.getSAVES();
 		window = new TranslucentWindow();
-		window.setPosition();
+		new Positioning().setRight();
 		new MyTrayIcon().initTrayIcon();
 		frameSettings.trigger();
 		
