@@ -44,7 +44,7 @@ public class App {
 		frameSettings.setVisible(true);
 		SAVES = SerializeSaves.getSAVES();
 		window = new TranslucentWindow();
-		MyTrayIcon.initTrayIcon();
+		new MyTrayIcon().initTrayIcon();
 		
 	}
 	

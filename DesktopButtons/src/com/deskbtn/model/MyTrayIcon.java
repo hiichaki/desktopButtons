@@ -1,14 +1,13 @@
 package com.deskbtn.model;
 
 import java.awt.AWTException;
-import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -17,9 +16,9 @@ import com.deskbtn.main.App;
 
 public class MyTrayIcon {
 
-	private static String iconPath = "E:/1/icon32.png";
+	private static String iconPath = "/com/deskbtn/model/images/icon32.png";
 
-	public static void initTrayIcon() {
+	public void initTrayIcon() {
 		if (!SystemTray.isSupported()) {
 			return;
 		}
@@ -38,14 +37,7 @@ public class MyTrayIcon {
 		});
 		trayMenu.add(exitItem);
 
-		Image icon = null;
-		try {
-			icon = ImageIO.read(new File(iconPath));
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-
-		TrayIcon trayIcon = new TrayIcon(icon, "some tooltip", trayMenu);
+		TrayIcon trayIcon = new TrayIcon(getImage(), "some tooltip", trayMenu);
 		trayIcon.setImageAutoSize(true);
 
 		SystemTray tray = SystemTray.getSystemTray();
@@ -57,7 +49,7 @@ public class MyTrayIcon {
 
 		trayIcon.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (e.getButton()==MouseEvent.BUTTON1) {
+				if (e.getButton() == MouseEvent.BUTTON1) {
 					if (App.window.isVisible()) {
 						App.window.setVisible(false);
 					} else {
@@ -71,4 +63,33 @@ public class MyTrayIcon {
 
 	}
 
+	public BufferedImage getImage() {
+
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(getClass().getResourceAsStream(iconPath));
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+
+		return image;
+		
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
