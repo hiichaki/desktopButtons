@@ -59,7 +59,8 @@ public class RoundButton extends JButton implements Serializable {
 		return this;
 
 	}
-
+	
+	@Override
 	protected void paintComponent(Graphics g) {
 		g.setColor(Color.lightGray);
 		g.fillOval(0, 0, getSize().width - 1, getSize().height - 1);

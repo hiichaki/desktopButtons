@@ -9,17 +9,17 @@ import com.deskbtn.model.SerializeSaves;
 public class App {
 	
 	/**
-	 * Pop-up
-	 * show/open
-	 * fileDialog
-	 * saves
-	 * settings
+	 * !Pop-up 
+	 * !show/open
+	 * !fileDialog
+	 * !saves
+	 * !settings
 	 * color
 	 * size
 	 * form
 	 * position
 	 * labels
-	 * remove/add
+	 * !remove/add
 	 * drag and drop
 	 */
 		
@@ -32,12 +32,12 @@ public class App {
 	
 	public static TranslucentWindow window;
 	
-	public static String pathString = "E://1.txt";
+	public static String pathString = System.getProperty( "user.home" )+"/buttonsSave.txt";
 	
 	public static boolean isPathExists() {
 		return new File (pathString).exists();
+		
 	}
-	
 	
 	public static void main(String[] args) {
 		frameSettings = new FrameSettings();
@@ -45,6 +45,7 @@ public class App {
 		SAVES = SerializeSaves.getSAVES();
 		window = new TranslucentWindow();
 		new MyTrayIcon().initTrayIcon();
+		frameSettings.load();
 		
 	}
 	

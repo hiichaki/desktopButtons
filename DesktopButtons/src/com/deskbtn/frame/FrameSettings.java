@@ -1,6 +1,5 @@
 package com.deskbtn.frame;
 
-import java.awt.Component;
 import java.awt.Desktop;
 import java.io.File;
 import java.util.ArrayList;
@@ -128,15 +127,15 @@ public class FrameSettings extends JFrame {
 		loadButton.setBounds(174, 248, 89, 23);
 		contentPane.add(loadButton);
 
-		JButton testBtn = new JButton("test");
-		testBtn.addActionListener(e -> {
-			Component[] com = App.window.getContentPane().getComponents();
-			for (Component tmp : com) {
-				System.out.println(((RoundButton) tmp).getPath());
-			}
-		});
-		testBtn.setBounds(280, 248, 89, 23);
-		contentPane.add(testBtn);
+//		JButton testBtn = new JButton("test");
+//		testBtn.addActionListener(e -> {
+//			Component[] com = App.window.getContentPane().getComponents();
+//			for (Component tmp : com) {
+//				System.out.println(((RoundButton) tmp).getPath());
+//			}
+//		});
+//		testBtn.setBounds(280, 248, 89, 23);
+//		contentPane.add(testBtn);
 		repaint();
 		revalidate();
 	}
@@ -192,7 +191,7 @@ public class FrameSettings extends JFrame {
 		load();
 	}
 
-	private void load() {
+	public void load() {
 		if (App.isPathExists()) {
 			App.window.clear();
 			try {

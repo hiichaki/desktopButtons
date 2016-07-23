@@ -33,6 +33,7 @@ public class BtnPopupMenu extends JPopupMenu {
 			App.window.refresh();
 
 		});
+		testItem.setEnabled(false);
 		
 		this.add(testItem);
 		this.add(deleteItem);
