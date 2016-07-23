@@ -1,6 +1,7 @@
 package com.deskbtn.frame;
 
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +30,7 @@ public class FrameSettings extends JFrame {
 	private JPanel contentPane;
 	private JTextField browseFileField;
 	private JButton createFileButton;
-	private File file;
+	private File file = new File(System.getProperty("user.home"));
 	private JFileChooser fileChooser;
 	private JTextField browseDirectoryField;
 
@@ -70,13 +71,12 @@ public class FrameSettings extends JFrame {
 		contentPane.add(browseFileField);
 		browseFileField.setColumns(10);
 		browseFileField.setEnabled(false);
-		
 
 		createFileButton = new JButton("Create");
 		createFileButton.addActionListener(e -> {
 			createFileButton();
 			browseFileField.setText("");
-			
+
 		});
 		createFileButton.setBounds(222, 91, 89, 23);
 		contentPane.add(createFileButton);
@@ -111,7 +111,7 @@ public class FrameSettings extends JFrame {
 		createDirectoryButton.addActionListener(e -> {
 			createDirectoryButton();
 			browseDirectoryField.setText("");
-			
+
 		});
 		createDirectoryButton.setBounds(222, 199, 89, 23);
 		contentPane.add(createDirectoryButton);
@@ -127,15 +127,12 @@ public class FrameSettings extends JFrame {
 		loadButton.setBounds(174, 248, 89, 23);
 		contentPane.add(loadButton);
 
-//		JButton testBtn = new JButton("test");
-//		testBtn.addActionListener(e -> {
-//			Component[] com = App.window.getContentPane().getComponents();
-//			for (Component tmp : com) {
-//				System.out.println(((RoundButton) tmp).getPath());
-//			}
-//		});
-//		testBtn.setBounds(280, 248, 89, 23);
-//		contentPane.add(testBtn);
+		// JButton testBtn = new JButton("test");
+		// testBtn.addActionListener(e -> {
+		//
+		// });
+		// testBtn.setBounds(280, 248, 89, 23);
+		// contentPane.add(testBtn);
 		repaint();
 		revalidate();
 	}
@@ -167,9 +164,9 @@ public class FrameSettings extends JFrame {
 			ex.printStackTrace();
 		}
 
-		App.window.addButton(tmpButton);
+		trigger();
 	}
-	
+
 	private void createDirectoryButton() {
 		RoundButton tmpButton = new RoundButton(file.getPath());
 		// tmpButton.setPath(file.getPath());
@@ -187,8 +184,8 @@ public class FrameSettings extends JFrame {
 			ex.printStackTrace();
 		}
 
-		App.window.clear();
-		load();
+		trigger();
+
 	}
 
 	public void load() {
@@ -200,7 +197,7 @@ public class FrameSettings extends JFrame {
 				while (iter.hasNext()) {
 					File tmpFile = new File(iter.next());
 
-					System.out.println(tmpFile.getName());
+//					System.out.println(tmpFile.getName());
 					RoundButton tmpRB = new RoundButton(tmpFile.getPath());
 					tmpRB.addActionListener(event -> {
 						try {
@@ -217,6 +214,21 @@ public class FrameSettings extends JFrame {
 				ex.printStackTrace();
 			}
 		}
+	}
+
+	public void trigger() {
+		App.window.clear();
+		load();
+		resize();
+	}
+
+	private void resize() {
+		double count = App.window.getContentPane().getComponents().length;
+		double inRaw = App.windowWidth / 48.0;
+		double raws = Math.ceil(count / inRaw);
+		double height = raws * 50;
+		App.window.setSize(new Dimension(App.windowWidth, (int)height));
+		
 	}
 
 }

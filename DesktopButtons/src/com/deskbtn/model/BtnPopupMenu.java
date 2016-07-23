@@ -25,12 +25,10 @@ public class BtnPopupMenu extends JPopupMenu {
 		deleteItem.addActionListener(e -> {
 			App.window.deleteButton(btn);
 			App.SAVES.saveButtons();
-
+			App.frameSettings.trigger();
 		});
 		JMenuItem testItem = new JMenuItem(btn.getPath());
 		testItem.addActionListener(e -> {
-			btn.setBackground(Color.RED);
-			App.window.refresh();
 
 		});
 		testItem.setEnabled(false);

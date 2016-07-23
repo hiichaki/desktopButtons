@@ -32,7 +32,9 @@ public class App {
 	
 	public static TranslucentWindow window;
 	
-	public static String pathString = System.getProperty( "user.home" )+"/buttonsSave.txt";
+	public static String pathString = System.getProperty( "user.home" ) + "/buttonsSave.txt";
+	
+	public static int windowWidth = 200;
 	
 	public static boolean isPathExists() {
 		return new File (pathString).exists();
@@ -44,8 +46,9 @@ public class App {
 		frameSettings.setVisible(true);
 		SAVES = SerializeSaves.getSAVES();
 		window = new TranslucentWindow();
+		window.setPosition();
 		new MyTrayIcon().initTrayIcon();
-		frameSettings.load();
+		frameSettings.trigger();
 		
 	}
 	

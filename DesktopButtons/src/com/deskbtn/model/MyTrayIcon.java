@@ -24,7 +24,18 @@ public class MyTrayIcon {
 		}
 
 		PopupMenu trayMenu = new PopupMenu();
-
+		
+//		Menu submenu = new Menu("submenu");
+//		submenu.add("qwe");
+//		submenu.add("asd");
+//		trayMenu.add(submenu);
+		
+		MenuItem moveItem = new MenuItem("Move");
+		moveItem.addActionListener(e -> {
+			App.window.setUndecorated(false);
+		});
+		trayMenu.add(moveItem);
+		
 		MenuItem settingsItem = new MenuItem("Settings");
 		settingsItem.addActionListener(e -> {
 			App.frameSettings.setVisible(true);

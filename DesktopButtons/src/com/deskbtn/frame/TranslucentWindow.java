@@ -3,6 +3,9 @@ package com.deskbtn.frame;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -23,7 +26,7 @@ public class TranslucentWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -8531962971491318167L;
-
+	
 	public TranslucentWindow() {
 
 		try {
@@ -32,15 +35,13 @@ public class TranslucentWindow extends JFrame {
 			ex.getStackTrace();
 		}
 
-		setDefaultCloseOperation(HIDE_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		try {
 			if (App.isPathExists()) {
-
 				for (Iterator<String> iter = App.SAVES.getSave().iterator(); iter.hasNext();) {
 					App.SAVES.addSave(iter.next());
 				}
-
 			}
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
@@ -51,11 +52,32 @@ public class TranslucentWindow extends JFrame {
 
 		TranslucentPane pane = new TranslucentPane();
 		this.setContentPane(pane);
-		this.setSize(new Dimension(200, 400));
+		this.setSize(new Dimension(App.windowWidth, 50));
 		pane.setLayout(new FlowLayout());
 
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+
+	}
+
+	public void setPosition() {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int width = (int) screenSize.getWidth();
+		int height = (int) screenSize.getHeight();
+		int x = width - App.windowWidth;
+		int y = height / 3;
+		this.setBounds(x, y, width, 50);
+
+	}
+
+	// multiple screens
+	public void setPosition2() {
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		int width = gd.getDisplayMode().getWidth();
+		int height = gd.getDisplayMode().getHeight();
+		int x = width - App.windowWidth;
+		int y = height / 3;
+		this.setBounds(x, y, App.windowWidth, 50);
 
 	}
 
@@ -78,5 +100,6 @@ public class TranslucentWindow extends JFrame {
 		this.repaint();
 		this.revalidate();
 	}
+
 
 }
