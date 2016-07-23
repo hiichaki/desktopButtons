@@ -71,36 +71,13 @@ public class FrameSettings extends JFrame {
 		contentPane.add(browseFileField);
 		browseFileField.setColumns(10);
 		browseFileField.setEnabled(false);
+		
 
 		createFileButton = new JButton("Create");
 		createFileButton.addActionListener(e -> {
-			RoundButton tmpButton = new RoundButton(file.getPath());
-			tmpButton.addActionListener(event -> {
-				try {
-
-					String[] split = browseFileField.getText().split("\\.");
-					String extension = split[split.length - 1].toLowerCase();
-
-					if (extension.equals("txt")) {
-						Runtime.getRuntime().exec("notepad " + (browseFileField.getText()));
-					}
-
-					if (extension.equals("exe")) {
-						Runtime.getRuntime().exec(file.getAbsolutePath(), null, file.getParentFile());
-					}
-
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-			});
-
-			try {
-				// App.serializeSaves.addSave(tmpButton);
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-
-			App.window.addButton(tmpButton);
+			createFileButton();
+			browseFileField.setText("");
+			
 		});
 		createFileButton.setBounds(222, 91, 89, 23);
 		contentPane.add(createFileButton);
@@ -134,6 +111,8 @@ public class FrameSettings extends JFrame {
 		JButton createDirectoryButton = new JButton("Create");
 		createDirectoryButton.addActionListener(e -> {
 			createDirectoryButton();
+			browseDirectoryField.setText("");
+			
 		});
 		createDirectoryButton.setBounds(222, 199, 89, 23);
 		contentPane.add(createDirectoryButton);
@@ -162,6 +141,36 @@ public class FrameSettings extends JFrame {
 		revalidate();
 	}
 
+	private void createFileButton() {
+		RoundButton tmpButton = new RoundButton(file.getPath());
+		tmpButton.addActionListener(event -> {
+			try {
+
+				String[] split = browseFileField.getText().split("\\.");
+				String extension = split[split.length - 1].toLowerCase();
+
+				if (extension.equals("txt")) {
+					Runtime.getRuntime().exec("notepad " + (browseFileField.getText()));
+				}
+
+				if (extension.equals("exe")) {
+					Runtime.getRuntime().exec(file.getAbsolutePath(), null, file.getParentFile());
+				}
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		});
+
+		try {
+			// App.serializeSaves.addSave(tmpButton);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		App.window.addButton(tmpButton);
+	}
+	
 	private void createDirectoryButton() {
 		RoundButton tmpButton = new RoundButton(file.getPath());
 		// tmpButton.setPath(file.getPath());

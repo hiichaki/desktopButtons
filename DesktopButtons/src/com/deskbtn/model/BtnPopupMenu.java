@@ -27,7 +27,7 @@ public class BtnPopupMenu extends JPopupMenu {
 			App.SAVES.saveButtons();
 
 		});
-		JMenuItem testItem = new JMenuItem("Test");
+		JMenuItem testItem = new JMenuItem(btn.getPath());
 		testItem.addActionListener(e -> {
 			btn.setBackground(Color.RED);
 			App.window.refresh();
