@@ -9,9 +9,9 @@ import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.Iterator;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import com.deskbtn.main.App;
@@ -34,6 +34,12 @@ public class TranslucentWindow extends JDialog {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception ex) {
 			ex.getStackTrace();
+		}
+		
+		try {
+			setIconImage(ImageIO.read(getClass().getResourceAsStream(App.iconPath)));
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);

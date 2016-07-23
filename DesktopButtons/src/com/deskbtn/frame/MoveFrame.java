@@ -1,11 +1,15 @@
 package com.deskbtn.frame;
 
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.deskbtn.main.App;
 import com.deskbtn.model.Positioning;
 
 public class MoveFrame extends JDialog {
@@ -15,9 +19,16 @@ public class MoveFrame extends JDialog {
 	 */
 	private static final long serialVersionUID = -7586909906259401889L;
 	private JPanel contentPane;
-
+	
 	public MoveFrame() {
 		setTitle("Positioning");
+		
+		try {
+			setIconImage(ImageIO.read(getClass().getResourceAsStream(App.iconPath)));
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		
 		setBounds(100, 100, 325, 186);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

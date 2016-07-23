@@ -3,13 +3,14 @@ package com.deskbtn.frame;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -42,6 +43,12 @@ public class FrameSettings extends JDialog {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception ex) {
 			ex.getStackTrace();
+		}
+		
+		try {
+			setIconImage(ImageIO.read(getClass().getResourceAsStream(App.iconPath)));
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
 
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

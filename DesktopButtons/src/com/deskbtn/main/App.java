@@ -37,7 +37,9 @@ public class App {
 	
 	public static String pathString = System.getProperty( "user.home" ) + "/buttonsSave.txt";
 	
-	public static int windowWidth = 200;
+	public static int windowWidth = 150;
+	
+	public static String iconPath = "/com/deskbtn/model/images/icon32.png";
 	
 	private  static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	public static int screenWidth = (int) screenSize.getWidth();

@@ -17,8 +17,6 @@ import com.deskbtn.main.App;
 
 public class MyTrayIcon {
 
-	private static String iconPath = "/com/deskbtn/model/images/icon32.png";
-
 	public void initTrayIcon() {
 		if (!SystemTray.isSupported()) {
 			return;
@@ -79,7 +77,7 @@ public class MyTrayIcon {
 
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(getClass().getResourceAsStream(iconPath));
+			image = ImageIO.read(getClass().getResourceAsStream(App.iconPath));
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
