@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
@@ -20,7 +21,7 @@ import com.deskbtn.model.TranslucentPane;
 /*
  * frame with buttons
  */
-public class TranslucentWindow extends JFrame {
+public class TranslucentWindow extends JDialog {
 
 	/**
 	 * 
@@ -35,7 +36,7 @@ public class TranslucentWindow extends JFrame {
 			ex.getStackTrace();
 		}
 
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 		try {
 			if (App.isPathExists()) {

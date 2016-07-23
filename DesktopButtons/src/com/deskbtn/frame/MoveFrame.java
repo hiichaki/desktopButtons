@@ -1,13 +1,14 @@
 package com.deskbtn.frame;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.deskbtn.model.Positioning;
 
-public class MoveFrame extends JFrame {
+public class MoveFrame extends JDialog {
 
 	/**
 	 * 
@@ -16,7 +17,7 @@ public class MoveFrame extends JFrame {
 	private JPanel contentPane;
 
 	public MoveFrame() {
-		super("Positioning");
+		setTitle("Positioning");
 		setBounds(100, 100, 325, 186);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

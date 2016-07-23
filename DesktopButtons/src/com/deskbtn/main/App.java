@@ -50,7 +50,7 @@ public class App {
 	
 	public static void main(String[] args) {
 		frameSettings = new FrameSettings();
-		frameSettings.setVisible(true);
+//		frameSettings.setVisible(true);
 		SAVES = SerializeSaves.getSAVES();
 		window = new TranslucentWindow();
 		new Positioning().setRight();

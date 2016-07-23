@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,7 +22,7 @@ import com.deskbtn.model.RoundButton;
 /*
  * frame which creates buttons
  */
-public class FrameSettings extends JFrame {
+public class FrameSettings extends JDialog {
 
 	/**
 	 * 
@@ -35,7 +36,7 @@ public class FrameSettings extends JFrame {
 	private JTextField browseDirectoryField;
 
 	public FrameSettings() {
-		super("Settings");
+		setTitle("Settings");
 
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
