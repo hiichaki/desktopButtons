@@ -47,7 +47,7 @@ public class RoundButton extends JButton implements Serializable {
 			}
 
 			private void doPop(MouseEvent e) {
-				RoundBtnPopupMenu menu = new RoundBtnPopupMenu(getThis());
+				BtnPopupMenu menu = new BtnPopupMenu(getThis());
 				menu.show(e.getComponent(), e.getX(), e.getY());
 			}
 
