@@ -11,6 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.UIManager;
 
 import com.deskbtn.main.App;
+import com.deskbtn.model.BtnPropperties;
 import com.deskbtn.model.RoundButton;
 import com.deskbtn.model.TranslucentPane;
 
@@ -23,7 +24,7 @@ public class MainFrame extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = -8531962971491318167L;
-	
+
 	public MainFrame() {
 
 		try {
@@ -31,14 +32,14 @@ public class MainFrame extends JDialog {
 		} catch (Exception ex) {
 			ex.getStackTrace();
 		}
-		
+
 		App.setIcon(this);
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 		try {
 			if (App.isPathExists()) {
-				for (Iterator<String> iter = App.SAVES.getSave().iterator(); iter.hasNext();) {
+				for (Iterator<BtnPropperties> iter = App.SAVES.getSave().iterator(); iter.hasNext();) {
 					App.SAVES.addSave(iter.next());
 				}
 			}
@@ -78,6 +79,5 @@ public class MainFrame extends JDialog {
 		this.repaint();
 		this.revalidate();
 	}
-
 
 }

@@ -25,18 +25,19 @@ public class MyTrayIcon {
 		}
 
 		PopupMenu trayMenu = new PopupMenu();
-		
-//		Menu submenu = new Menu("submenu");
-//		submenu.add("qwe");
-//		submenu.add("asd");
-//		trayMenu.add(submenu);
-		
+
+		// Menu submenu = new Menu("submenu");
+		// submenu.add("qwe");
+		// submenu.add("asd");
+		// trayMenu.add(submenu);
+
 		MenuItem moveItem = new MenuItem("Move");
 		moveItem.addActionListener(e -> {
-			new MoveFrame().setVisible(true);;
+			new MoveFrame().setVisible(true);
+			;
 		});
 		trayMenu.add(moveItem);
-		
+
 		MenuItem settingsItem = new MenuItem("Add");
 		settingsItem.addActionListener(e -> {
 			App.addingFrame.setVisible(true);
@@ -85,23 +86,7 @@ public class MyTrayIcon {
 		}
 
 		return image;
-		
+
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

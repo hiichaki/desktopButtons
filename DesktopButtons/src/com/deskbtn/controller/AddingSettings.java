@@ -9,10 +9,11 @@ import java.util.Iterator;
 import javax.swing.JFileChooser;
 
 import com.deskbtn.main.App;
+import com.deskbtn.model.BtnPropperties;
 import com.deskbtn.model.RoundButton;
 
 public class AddingSettings {
-	
+
 	public static File getFile() {
 		JFileChooser fileChooser = new JFileChooser();
 		File file = null;
@@ -22,10 +23,10 @@ public class AddingSettings {
 		if (ret == JFileChooser.APPROVE_OPTION) {
 			file = fileChooser.getSelectedFile();
 		}
-		
+
 		return file;
 	}
-	
+
 	public static File getDirectory() {
 		JFileChooser fileChooser = new JFileChooser();
 		File file = null;
@@ -37,7 +38,7 @@ public class AddingSettings {
 		}
 		return file;
 	}
-	
+
 	public static void createFileButton(File file) {
 		RoundButton tmpButton = new RoundButton(file.getPath());
 		tmpButton.addActionListener(event -> {
@@ -59,9 +60,9 @@ public class AddingSettings {
 			}
 		});
 
-		save(file);
+		save(tmpButton.getBtnPropperties());
 		trigger();
-		
+
 	}
 
 	public static void createDirectoryButton(File file) {
@@ -75,14 +76,14 @@ public class AddingSettings {
 			}
 		});
 
-		save(file);
+		save(tmpButton.getBtnPropperties());
 		trigger();
 
 	}
-	
-	private static void save(File file) {
+
+	private static void save(BtnPropperties btnPropperties) {
 		try {
-			App.SAVES.addSave(file.getPath());
+			App.SAVES.addSave(btnPropperties);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -92,10 +93,10 @@ public class AddingSettings {
 		if (App.isPathExists()) {
 			App.mainFrame.clear();
 			try {
-				ArrayList<String> loadFiles = App.SAVES.getSave();
-				Iterator<String> iter = loadFiles.iterator();
+				ArrayList<BtnPropperties> loadFiles = App.SAVES.getSave();
+				Iterator<BtnPropperties> iter = loadFiles.iterator();
 				while (iter.hasNext()) {
-					File tmpFile = new File(iter.next());
+					File tmpFile = new File(iter.next().getPath());
 
 					// System.out.println(tmpFile.getName());
 					RoundButton tmpRB = new RoundButton(tmpFile.getPath());

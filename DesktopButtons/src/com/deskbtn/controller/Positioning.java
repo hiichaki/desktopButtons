@@ -3,7 +3,7 @@ package com.deskbtn.controller;
 import com.deskbtn.main.App;
 
 public class Positioning {
-	
+
 	private int width = App.screenWidth;
 	private int height = App.screenHeight;
 
@@ -55,13 +55,13 @@ public class Positioning {
 		int y = 0;
 		App.mainFrame.setBounds(x, y, App.windowWidth, App.mainFrame.getHeight());
 	}
-	
+
 	public void setBottomRight() {
 		int x = width - App.windowWidth;
 		int y = height - App.mainFrame.getHeight();
 		App.mainFrame.setBounds(x, y, App.windowWidth, App.mainFrame.getHeight());
 	}
-	
+
 	public void setBottomLeft() {
 		int x = 0;
 		int y = height - App.mainFrame.getHeight();

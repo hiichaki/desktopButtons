@@ -18,36 +18,37 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import com.deskbtn.main.App;
+import com.deskbtn.model.BtnPropperties;
 import com.deskbtn.model.RoundButton;
 
 public class SavesSerializing {
 
-	private ArrayList<String> list;
+	private ArrayList<BtnPropperties> list;
 
 	private static SavesSerializing SAVES;
 
 	private SavesSerializing() {
-		list = new ArrayList<String>();
+		list = new ArrayList<BtnPropperties>();
 	}
 
 	static {
 		setSAVES(new SavesSerializing());
 	}
 
-	public void addSave(String file) throws IOException {
-		list.add(file);
+	public void addSave(BtnPropperties btnPropperties) throws IOException {
+		list.add(btnPropperties);
 		setBytesIntoFile(convertToBytes(list));
 	}
 
-	public void delSave(String file) throws IOException {
-		list.remove(file);
+	public void delSave(BtnPropperties btnPropperties) throws IOException {
+		list.remove(btnPropperties);
 		setBytesIntoFile(convertToBytes(list));
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<String> getSave() throws ClassNotFoundException, IOException {
-		return ((ArrayList<String>) convertFromBytes(getBytesFromFile()));
-		
+	public ArrayList<BtnPropperties> getSave() throws ClassNotFoundException, IOException {
+		return ((ArrayList<BtnPropperties>) convertFromBytes(getBytesFromFile()));
+
 	}
 
 	public byte[] getBytesFromFile() throws IOException {
@@ -85,26 +86,26 @@ public class SavesSerializing {
 		return SAVES;
 	}
 
-	public static void setSAVES(SavesSerializing sAVES) {
-		SAVES = sAVES;
+	public static void setSAVES(SavesSerializing SAVES) {
+		SavesSerializing.SAVES = SAVES;
 	}
-	
+
 	public void saveButtons() {
 		clearFile();
 		list.clear();
-		
+
 		Component[] com = App.mainFrame.getContentPane().getComponents();
 		for (Component tmp : com) {
-			list.add(((RoundButton) tmp).getPath());
+			list.add(((RoundButton) tmp).getBtnPropperties());
 		}
 		try {
 			setBytesIntoFile(convertToBytes(list));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	private void clearFile() {
 		PrintWriter writer = null;
 		try {

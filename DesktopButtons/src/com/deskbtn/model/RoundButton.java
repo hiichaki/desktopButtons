@@ -18,22 +18,23 @@ public class RoundButton extends JButton implements Serializable {
 	 */
 	private static final long serialVersionUID = 3824829552537309541L;
 
-	private String path;
+	private BtnPropperties btnPropperties;
 
-	public String getPath() {
-		return path;
+	public BtnPropperties getBtnPropperties() {
+		return btnPropperties;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setBtnPropperties(BtnPropperties btnPropperties) {
+		this.btnPropperties = btnPropperties;
 	}
 
 	public RoundButton(String path) {
 		Dimension size = new Dimension(40, 40); // getPreferredSize();
 		size.width = size.height = Math.max(size.width, size.height);
 		setPreferredSize(size);
-
-		this.path = path;
+		
+		btnPropperties = new BtnPropperties();
+		btnPropperties.setPath(path);
 
 		setContentAreaFilled(false);
 
@@ -61,22 +62,22 @@ public class RoundButton extends JButton implements Serializable {
 		return this;
 
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		g.setColor(Color.lightGray);
 		g.fillOval(0, 0, getSize().width - 1, getSize().height - 1);
 
 	}
-	
-//	Shape shape;
-//
-//	public boolean contains(int x, int y) {
-//		if (shape == null || !shape.getBounds().equals(getBounds())) {
-//			shape = new Ellipse2D.Float(0, 0, getWidth(), getHeight());
-//		}
-//		return shape.contains(x, y);
-//
-//	}
+
+	// Shape shape;
+	//
+	// public boolean contains(int x, int y) {
+	// if (shape == null || !shape.getBounds().equals(getBounds())) {
+	// shape = new Ellipse2D.Float(0, 0, getWidth(), getHeight());
+	// }
+	// return shape.contains(x, y);
+	//
+	// }
 
 }
