@@ -36,9 +36,8 @@ public class App {
 	 * count 
 	 * in raw 
 	 * frames prop save
+	 * to many useless iterations!!!
 	 */
-
-	// TODO: use created id for buttons
 
 	public static BtnPropSerializing btnSAVES;
 
@@ -59,6 +58,12 @@ public class App {
 	public static void resizeWindow(int inRaw) {
 		windowWidth = inRaw * 50;
 		AddingSettings.trigger();
+		mainFrame.getFramePropperties().setWidth(windowWidth);
+		try {
+			frameSAVES.addSave(mainFrame.getFramePropperties(), "MainFrame");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static boolean isPathExists(String file) {
@@ -107,7 +112,6 @@ public class App {
 		try {
 			FramePropperties framePropperties = frameSAVES.getSaves().get("MainFrame");
 			mainFrame = new MainFrame(framePropperties);
-			// AddingSettings.trigger();
 			// ****************************************************************
 			System.out.println("get frame position from save (App)");
 		} catch (ClassNotFoundException | IOException e) {
@@ -116,8 +120,8 @@ public class App {
 			System.out.println("set default frame position (App)");
 		}
 
-		new Positioning().loadPosition(mainFrame.getFramePropperties().getMainFramePosition());
-
+		new Positioning().setPosition(mainFrame.getFramePropperties().getMainFramePosition());
+		windowWidth = App.mainFrame.getFramePropperties().getWidth();
 		new MyTrayIcon().initTrayIcon();
 		AddingSettings.trigger();
 

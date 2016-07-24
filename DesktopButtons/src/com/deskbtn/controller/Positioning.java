@@ -15,7 +15,7 @@ public class Positioning {
 	// int width = gd.getDisplayMode().getWidth();
 	// int height = gd.getDisplayMode().getHeight();
 
-	public void loadPosition(int mainFramePosition) {
+	public void setPosition(int mainFramePosition) {
 		switch (mainFramePosition) {
 		case 1:
 			setBottomLeft();

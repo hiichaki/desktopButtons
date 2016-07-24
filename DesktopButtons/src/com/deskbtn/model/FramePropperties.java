@@ -10,6 +10,8 @@ public class FramePropperties implements Serializable{
 	private static final long serialVersionUID = 4770307112617698004L;
 	
 	private int mainFramePosition;
+	
+	private int width;
 
 	public FramePropperties() {
 	}
@@ -21,6 +23,16 @@ public class FramePropperties implements Serializable{
 	public void setMainFramePosition(int mainFramePosition) {
 		this.mainFramePosition = mainFramePosition;
 	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int inRaw) {
+		this.width = inRaw;
+	}
+	
+	
 	
 	
 

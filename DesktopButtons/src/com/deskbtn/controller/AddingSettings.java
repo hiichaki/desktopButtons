@@ -132,6 +132,7 @@ public class AddingSettings {
 		if ((App.mainFrame.getY() + height) > App.screenHeight)
 			App.mainFrame.setLocation(App.mainFrame.getX(), App.mainFrame.getY() - 50);
 		App.mainFrame.setSize(new Dimension(App.windowWidth, (int) height));
+		new Positioning().setPosition(App.mainFrame.getFramePropperties().getMainFramePosition());
 
 	}
 }
