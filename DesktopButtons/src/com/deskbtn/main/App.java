@@ -23,13 +23,14 @@ public class App {
 	 * !saves
 	 * !settings
 	 * settings interface
-	 * color
+	 * !color
 	 * size
 	 * !form
 	 * !position
 	 * labels
 	 * !remove/add
 	 * drag and drop
+	 * positioning open dialogs
 	 */
 		
 	
