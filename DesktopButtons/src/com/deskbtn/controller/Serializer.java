@@ -18,6 +18,8 @@ import java.nio.file.Paths;
 public class Serializer {
 
 	public static byte[] getBytesFromFile(String path) throws IOException {
+		// ****************************************************************
+		System.out.println("get from file: " + path + " (Serializer)");
 		Path filePath = Paths.get(path);
 		byte[] data = Files.readAllBytes(filePath);
 		return data;
@@ -25,6 +27,8 @@ public class Serializer {
 	}
 
 	public static void setBytesIntoFile(byte[] byteArray, String path) throws IOException {
+		// ****************************************************************
+		System.out.println("set to file: " + path + " (Serializer)");
 		FileOutputStream fos;
 		try {
 			fos = new FileOutputStream(path);
@@ -49,6 +53,8 @@ public class Serializer {
 	}
 
 	public static void clearFile(String path) {
+		// ****************************************************************
+		System.out.println("cleared: " + path + " (Serializer)");
 		PrintWriter writer = null;
 		try {
 			writer = new PrintWriter(new File(path));

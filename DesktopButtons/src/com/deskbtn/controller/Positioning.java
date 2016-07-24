@@ -114,7 +114,7 @@ public class Positioning {
 	private void trigger() {
 		App.mainFrame.setBounds(x, y, App.windowWidth, App.mainFrame.getHeight());
 		try {
-			App.frameSAVES.delSave("MainFrame");
+//			App.frameSAVES.delSave("MainFrame");
 			App.frameSAVES.addSave(App.mainFrame.getFramePropperties(), "MainFrame");
 		} catch (IOException e) {
 			e.printStackTrace();

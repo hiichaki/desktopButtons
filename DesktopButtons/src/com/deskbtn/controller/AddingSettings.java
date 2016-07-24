@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 import javax.swing.JFileChooser;
 
+import com.deskbtn.frame.MainFrame;
 import com.deskbtn.main.App;
 import com.deskbtn.model.BtnPropperties;
 import com.deskbtn.model.RoundButton;
@@ -95,7 +96,8 @@ public class AddingSettings {
 				ArrayList<BtnPropperties> loadFiles = App.btnSAVES.getSave();
 				Iterator<BtnPropperties> iter = loadFiles.iterator();
 				while (iter.hasNext()) {
-
+//****************************************************************
+					System.out.println("load (AddingSettings)");
 					// System.out.println(tmpFile.getName());
 					RoundButton tmpRB = new RoundButton(iter.next());
 					tmpRB.addActionListener(event -> {
@@ -108,7 +110,7 @@ public class AddingSettings {
 					App.mainFrame.addButton(tmpRB);
 
 				}
-
+				App.mainFrame.refresh();
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -116,6 +118,8 @@ public class AddingSettings {
 	}
 
 	public static void trigger() {
+//****************************************************************
+		System.out.println("trigger (AddingSettings)");
 		App.mainFrame.clear();
 		load();
 		resize();

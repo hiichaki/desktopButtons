@@ -84,12 +84,11 @@ public class MainFrame extends JDialog {
 
 	public void addButton(JButton btn) {
 		this.add(btn);
-		refresh();
 	}
 
 	public void clear() {
 		this.getContentPane().removeAll();
-		refresh();
+//		refresh();
 	}
 
 	public void deleteButton(RoundButton btn) {
@@ -98,6 +97,8 @@ public class MainFrame extends JDialog {
 	}
 
 	public void refresh() {
+//****************************************************************
+		System.out.println("refresh MainFrame (MainFrame)");
 		this.repaint();
 		this.revalidate();
 	}
