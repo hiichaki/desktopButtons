@@ -12,6 +12,7 @@ import javax.swing.UIManager;
 
 import com.deskbtn.main.App;
 import com.deskbtn.model.BtnPropperties;
+import com.deskbtn.model.FramePropperties;
 import com.deskbtn.model.RoundButton;
 import com.deskbtn.model.TranslucentPane;
 
@@ -24,9 +25,30 @@ public class MainFrame extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = -8531962971491318167L;
+	
+	private FramePropperties framePropperties;
+	
+	
+	public FramePropperties getFramePropperties() {
+		return framePropperties;
+	}
+
+	public void setFramePropperties(FramePropperties framePropperties) {
+		this.framePropperties = framePropperties;
+	}
 
 	public MainFrame() {
-
+		init();		
+		framePropperties = new FramePropperties();
+		framePropperties.setMainFramePosition(6);
+	}
+	
+	public MainFrame(FramePropperties framePropperties) {
+		init();
+		this.framePropperties = framePropperties;
+	}
+	
+	private void init() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception ex) {
@@ -38,9 +60,9 @@ public class MainFrame extends JDialog {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 		try {
-			if (App.isPathExists()) {
-				for (Iterator<BtnPropperties> iter = App.SAVES.getSave().iterator(); iter.hasNext();) {
-					App.SAVES.addSave(iter.next());
+			if (App.isPathExists("/buttonsSave.txt")) {
+				for (Iterator<BtnPropperties> iter = App.btnSAVES.getSave().iterator(); iter.hasNext();) {
+					App.btnSAVES.addSave(iter.next());
 				}
 			}
 		} catch (ClassNotFoundException | IOException e) {
@@ -57,7 +79,7 @@ public class MainFrame extends JDialog {
 
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
-
+		
 	}
 
 	public void addButton(JButton btn) {

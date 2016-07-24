@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
+import com.deskbtn.frame.AddingFrame;
 import com.deskbtn.frame.MoveFrame;
 import com.deskbtn.main.App;
 
@@ -40,7 +41,7 @@ public class MyTrayIcon {
 
 		MenuItem settingsItem = new MenuItem("Add");
 		settingsItem.addActionListener(e -> {
-			App.addingFrame.setVisible(true);
+			new AddingFrame();
 		});
 		trayMenu.add(settingsItem);
 

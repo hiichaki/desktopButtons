@@ -14,6 +14,7 @@ public class BtnPropperties implements Serializable {
 
 	private String path;
 
+	@SuppressWarnings("unused")
 	private int position;
 
 	private Color color = Color.lightGray;;

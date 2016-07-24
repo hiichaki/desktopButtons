@@ -36,6 +36,7 @@ public class AddingFrame extends JDialog {
 		}
 
 		App.setIcon(this);
+		setVisible(true);
 
 		setBounds(100, 100, 490, 335);
 		JPanel contentPane = new JPanel();

@@ -30,7 +30,7 @@ public class BtnPopupMenu extends JPopupMenu {
 		JMenuItem deleteItem = new JMenuItem("Delete");
 		deleteItem.addActionListener(e -> {
 			App.mainFrame.deleteButton(btn);
-			App.SAVES.saveButtons();
+			App.btnSAVES.saveButtons();
 			AddingSettings.trigger();
 		});
 
@@ -50,7 +50,7 @@ public class BtnPopupMenu extends JPopupMenu {
 				return;
 			}
 			btn.getBtnPropperties().setColor(color);
-			App.SAVES.saveButtons();
+			App.btnSAVES.saveButtons();
 			App.mainFrame.refresh();
 			d.close();
 

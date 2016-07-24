@@ -82,17 +82,17 @@ public class AddingSettings {
 
 	private static void save(BtnPropperties btnPropperties) {
 		try {
-			App.SAVES.addSave(btnPropperties);
+			App.btnSAVES.addSave(btnPropperties);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 
 	public static void load() {
-		if (App.isPathExists()) {
+		if (App.isPathExists("/buttonsSave.txt")) {
 			App.mainFrame.clear();
 			try {
-				ArrayList<BtnPropperties> loadFiles = App.SAVES.getSave();
+				ArrayList<BtnPropperties> loadFiles = App.btnSAVES.getSave();
 				Iterator<BtnPropperties> iter = loadFiles.iterator();
 				while (iter.hasNext()) {
 
