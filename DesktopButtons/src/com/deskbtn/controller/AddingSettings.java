@@ -67,7 +67,6 @@ public class AddingSettings {
 
 	public static void createDirectoryButton(File file) {
 		RoundButton tmpButton = new RoundButton(file.getPath());
-		// tmpButton.setPath(file.getPath());
 		tmpButton.addActionListener(event -> {
 			try {
 				Desktop.getDesktop().open(file);
@@ -96,7 +95,6 @@ public class AddingSettings {
 				ArrayList<BtnPropperties> loadFiles = App.SAVES.getSave();
 				Iterator<BtnPropperties> iter = loadFiles.iterator();
 				while (iter.hasNext()) {
-					
 
 					// System.out.println(tmpFile.getName());
 					RoundButton tmpRB = new RoundButton(iter.next());

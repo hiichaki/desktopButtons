@@ -36,6 +36,7 @@ public class RoundButton extends JButton implements Serializable {
 	public RoundButton(String path) {
 		init();
 		this.btnPropperties = new BtnPropperties();
+		this.btnPropperties.setPath(path);
 
 	}
 

@@ -52,7 +52,7 @@ public class SavesSerializing {
 	}
 
 	public byte[] getBytesFromFile() throws IOException {
-		Path path = Paths.get(App.pathString);
+		Path path = Paths.get(App.homePath);
 		byte[] data = Files.readAllBytes(path);
 		return data;
 
@@ -61,7 +61,7 @@ public class SavesSerializing {
 	public void setBytesIntoFile(byte[] byteArray) throws IOException {
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream(App.pathString);
+			fos = new FileOutputStream(App.homePath);
 			fos.write(byteArray);
 			fos.close();
 		} catch (FileNotFoundException e) {
@@ -109,7 +109,7 @@ public class SavesSerializing {
 	private void clearFile() {
 		PrintWriter writer = null;
 		try {
-			writer = new PrintWriter(new File(App.pathString));
+			writer = new PrintWriter(new File(App.homePath));
 		} catch (FileNotFoundException ex) {
 			ex.printStackTrace();
 		}

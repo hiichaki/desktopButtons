@@ -22,7 +22,7 @@ public class AddingFrame extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-//	private JTextField browseFileField;
+	// private JTextField browseFileField;
 
 	private File file = new File(System.getProperty("user.home"));
 
@@ -34,7 +34,7 @@ public class AddingFrame extends JDialog {
 		} catch (Exception ex) {
 			ex.getStackTrace();
 		}
-		
+
 		App.setIcon(this);
 
 		setBounds(100, 100, 490, 335);
@@ -43,17 +43,16 @@ public class AddingFrame extends JDialog {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-
 		JTextField browseFileField = new JTextField();
 		browseFileField.setBounds(10, 60, 454, 20);
 		contentPane.add(browseFileField);
 		browseFileField.setColumns(10);
 		browseFileField.setEnabled(false);
-		
+
 		JButton browseFileButton = new JButton("Browse");
 		browseFileButton.addActionListener(e -> {
 			file = AddingSettings.getFile();
-			if(!(file==null)) {
+			if (!(file == null)) {
 				browseFileField.setText(file.getAbsolutePath());
 			}
 
@@ -79,19 +78,17 @@ public class AddingFrame extends JDialog {
 		browseDirectoryField.setColumns(10);
 		browseDirectoryField.setBounds(10, 168, 454, 20);
 		contentPane.add(browseDirectoryField);
-		
+
 		JButton browseDirectoryButton = new JButton("Browse");
 		browseDirectoryButton.addActionListener(e -> {
 			file = AddingSettings.getDirectory();
-			if(!(file==null)) {
+			if (!(file == null)) {
 				browseDirectoryField.setText(file.getAbsolutePath());
 			}
-			
+
 		});
 		browseDirectoryButton.setBounds(123, 199, 89, 23);
 		contentPane.add(browseDirectoryButton);
-
-		
 
 		JButton createDirectoryButton = new JButton("Create");
 		createDirectoryButton.addActionListener(e -> {
@@ -122,7 +119,5 @@ public class AddingFrame extends JDialog {
 		repaint();
 		revalidate();
 	}
-
-	
 
 }
