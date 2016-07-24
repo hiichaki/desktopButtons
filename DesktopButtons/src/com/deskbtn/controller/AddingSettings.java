@@ -96,13 +96,13 @@ public class AddingSettings {
 				ArrayList<BtnPropperties> loadFiles = App.SAVES.getSave();
 				Iterator<BtnPropperties> iter = loadFiles.iterator();
 				while (iter.hasNext()) {
-					File tmpFile = new File(iter.next().getPath());
+					
 
 					// System.out.println(tmpFile.getName());
-					RoundButton tmpRB = new RoundButton(tmpFile.getPath());
+					RoundButton tmpRB = new RoundButton(iter.next());
 					tmpRB.addActionListener(event -> {
 						try {
-							Desktop.getDesktop().open(tmpFile);
+							Desktop.getDesktop().open(new File(tmpRB.getBtnPropperties().getPath()));
 						} catch (Exception ex) {
 							ex.getStackTrace();
 						}

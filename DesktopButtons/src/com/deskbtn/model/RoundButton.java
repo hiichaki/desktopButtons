@@ -1,6 +1,5 @@
 package com.deskbtn.model;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
@@ -28,13 +27,22 @@ public class RoundButton extends JButton implements Serializable {
 		this.btnPropperties = btnPropperties;
 	}
 
+	public RoundButton(BtnPropperties btnPropperties) {
+		init();
+		this.btnPropperties = btnPropperties;
+
+	}
+
 	public RoundButton(String path) {
+		init();
+		this.btnPropperties = new BtnPropperties();
+
+	}
+
+	private void init() {
 		Dimension size = new Dimension(40, 40); // getPreferredSize();
 		size.width = size.height = Math.max(size.width, size.height);
 		setPreferredSize(size);
-		
-		btnPropperties = new BtnPropperties();
-		btnPropperties.setPath(path);
 
 		setContentAreaFilled(false);
 
@@ -65,7 +73,7 @@ public class RoundButton extends JButton implements Serializable {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		g.setColor(Color.lightGray);
+		g.setColor(btnPropperties.getColor());
 		g.fillOval(0, 0, getSize().width - 1, getSize().height - 1);
 
 	}
