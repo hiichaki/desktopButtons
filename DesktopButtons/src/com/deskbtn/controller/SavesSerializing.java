@@ -1,4 +1,4 @@
-package com.deskbtn.model;
+package com.deskbtn.controller;
 
 import java.awt.Component;
 import java.io.ByteArrayInputStream;
@@ -18,19 +18,20 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import com.deskbtn.main.App;
+import com.deskbtn.model.RoundButton;
 
-public class SerializeSaves {
+public class SavesSerializing {
 
 	private ArrayList<String> list;
 
-	private static SerializeSaves SAVES;
+	private static SavesSerializing SAVES;
 
-	private SerializeSaves() {
+	private SavesSerializing() {
 		list = new ArrayList<String>();
 	}
 
 	static {
-		setSAVES(new SerializeSaves());
+		setSAVES(new SavesSerializing());
 	}
 
 	public void addSave(String file) throws IOException {
@@ -80,11 +81,11 @@ public class SerializeSaves {
 		}
 	}
 
-	public static SerializeSaves getSAVES() {
+	public static SavesSerializing getSAVES() {
 		return SAVES;
 	}
 
-	public static void setSAVES(SerializeSaves sAVES) {
+	public static void setSAVES(SavesSerializing sAVES) {
 		SAVES = sAVES;
 	}
 	
@@ -92,7 +93,7 @@ public class SerializeSaves {
 		clearFile();
 		list.clear();
 		
-		Component[] com = App.window.getContentPane().getComponents();
+		Component[] com = App.mainFrame.getContentPane().getComponents();
 		for (Component tmp : com) {
 			list.add(((RoundButton) tmp).getPath());
 		}

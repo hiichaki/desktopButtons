@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.deskbtn.controller.Positioning;
 import com.deskbtn.main.App;
-import com.deskbtn.model.Positioning;
 
 public class MoveFrame extends JDialog {
 

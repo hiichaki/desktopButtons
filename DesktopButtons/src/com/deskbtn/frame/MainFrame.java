@@ -3,13 +3,9 @@ package com.deskbtn.frame;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.Iterator;
 
-import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.UIManager;
@@ -21,14 +17,14 @@ import com.deskbtn.model.TranslucentPane;
 /*
  * frame with buttons
  */
-public class TranslucentWindow extends JDialog {
+public class MainFrame extends JDialog {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8531962971491318167L;
 	
-	public TranslucentWindow() {
+	public MainFrame() {
 
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -36,11 +32,7 @@ public class TranslucentWindow extends JDialog {
 			ex.getStackTrace();
 		}
 		
-		try {
-			setIconImage(ImageIO.read(getClass().getResourceAsStream(App.iconPath)));
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
+		App.setIcon(this);
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -64,27 +56,6 @@ public class TranslucentWindow extends JDialog {
 
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
-
-	}
-
-	public void setPosition() {
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = (int) screenSize.getWidth();
-		int height = (int) screenSize.getHeight();
-		int x = width - App.windowWidth;
-		int y = height / 3;
-		this.setBounds(x, y, App.windowWidth, 50);
-
-	}
-
-	// multiple screens
-	public void setPosition2() {
-		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		int width = gd.getDisplayMode().getWidth();
-		int height = gd.getDisplayMode().getHeight();
-		int x = width - App.windowWidth;
-		int y = height / 3;
-		this.setBounds(x, y, App.windowWidth, 50);
 
 	}
 

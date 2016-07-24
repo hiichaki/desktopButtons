@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 import com.deskbtn.frame.MoveFrame;
 import com.deskbtn.main.App;
@@ -19,6 +20,7 @@ public class MyTrayIcon {
 
 	public void initTrayIcon() {
 		if (!SystemTray.isSupported()) {
+			JOptionPane.showMessageDialog(null, "!SystemTray.isSupported()");
 			return;
 		}
 
@@ -35,9 +37,9 @@ public class MyTrayIcon {
 		});
 		trayMenu.add(moveItem);
 		
-		MenuItem settingsItem = new MenuItem("Settings");
+		MenuItem settingsItem = new MenuItem("Add");
 		settingsItem.addActionListener(e -> {
-			App.frameSettings.setVisible(true);
+			App.addingFrame.setVisible(true);
 		});
 		trayMenu.add(settingsItem);
 
@@ -60,10 +62,10 @@ public class MyTrayIcon {
 		trayIcon.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == MouseEvent.BUTTON1) {
-					if (App.window.isVisible()) {
-						App.window.setVisible(false);
+					if (App.mainFrame.isVisible()) {
+						App.mainFrame.setVisible(false);
 					} else {
-						App.window.setVisible(true);
+						App.mainFrame.setVisible(true);
 					}
 				}
 			}

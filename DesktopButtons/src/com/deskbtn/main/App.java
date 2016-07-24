@@ -2,12 +2,17 @@ package com.deskbtn.main;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.IOException;
 
-import com.deskbtn.frame.FrameSettings;
-import com.deskbtn.frame.TranslucentWindow;
+import javax.imageio.ImageIO;
+import javax.swing.JDialog;
+
+import com.deskbtn.controller.AddingSettings;
+import com.deskbtn.controller.Positioning;
+import com.deskbtn.controller.SavesSerializing;
+import com.deskbtn.frame.AddingFrame;
+import com.deskbtn.frame.MainFrame;
 import com.deskbtn.model.MyTrayIcon;
-import com.deskbtn.model.Positioning;
-import com.deskbtn.model.SerializeSaves;
 
 public class App {
 	
@@ -17,10 +22,11 @@ public class App {
 	 * !fileDialog
 	 * !saves
 	 * !settings
+	 * settings interface
 	 * color
 	 * size
-	 * form
-	 * position
+	 * !form
+	 * !position
 	 * labels
 	 * !remove/add
 	 * drag and drop
@@ -29,11 +35,11 @@ public class App {
 	
 //	TODO: use created id for buttons  
 	
-	public static FrameSettings frameSettings;
+	public static AddingFrame addingFrame;
 
-	public static SerializeSaves SAVES;
+	public static SavesSerializing SAVES;
 	
-	public static TranslucentWindow window;
+	public static MainFrame mainFrame;
 	
 	public static String pathString = System.getProperty( "user.home" ) + "/buttonsSave.txt";
 	
@@ -50,14 +56,22 @@ public class App {
 		
 	}
 	
+	public static void setIcon(JDialog dialog) {
+		try {
+			dialog.setIconImage(ImageIO.read(dialog.getClass().getResourceAsStream(App.iconPath)));
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
-		frameSettings = new FrameSettings();
+		addingFrame = new AddingFrame();
 //		frameSettings.setVisible(true);
-		SAVES = SerializeSaves.getSAVES();
-		window = new TranslucentWindow();
+		SAVES = SavesSerializing.getSAVES();
+		mainFrame = new MainFrame();
 		new Positioning().setRight();
 		new MyTrayIcon().initTrayIcon();
-		frameSettings.trigger();
+		AddingSettings.trigger();
 		
 	}
 	

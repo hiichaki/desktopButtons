@@ -1,4 +1,4 @@
-package com.deskbtn.model;
+package com.deskbtn.controller;
 
 import java.awt.Color;
 
@@ -7,6 +7,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.UIManager;
 
 import com.deskbtn.main.App;
+import com.deskbtn.model.RoundButton;
 
 public class BtnPopupMenu extends JPopupMenu {
 
@@ -23,9 +24,9 @@ public class BtnPopupMenu extends JPopupMenu {
 		}
 		JMenuItem deleteItem = new JMenuItem("Delete");
 		deleteItem.addActionListener(e -> {
-			App.window.deleteButton(btn);
+			App.mainFrame.deleteButton(btn);
 			App.SAVES.saveButtons();
-			App.frameSettings.trigger();
+			AddingSettings.trigger();
 		});
 		JMenuItem testItem = new JMenuItem(btn.getPath());
 		testItem.addActionListener(e -> {
