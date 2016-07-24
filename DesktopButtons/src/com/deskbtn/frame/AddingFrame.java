@@ -12,6 +12,8 @@ import javax.swing.border.EmptyBorder;
 
 import com.deskbtn.controller.AddingSettings;
 import com.deskbtn.main.App;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 /*
  * frame which creates buttons
@@ -110,6 +112,14 @@ public class AddingFrame extends JDialog {
 		});
 		loadButton.setBounds(174, 248, 89, 23);
 		contentPane.add(loadButton);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(new Integer(3), new Integer(1), null, new Integer(1)));
+		spinner.setBounds(315, 249, 29, 20);
+		contentPane.add(spinner);
+		spinner.addChangeListener(e -> {
+			App.resizeWindow((int) spinner.getValue());
+		});
 
 		// JButton testBtn = new JButton("test");
 		// testBtn.addActionListener(e -> {
@@ -120,5 +130,4 @@ public class AddingFrame extends JDialog {
 		repaint();
 		revalidate();
 	}
-
 }

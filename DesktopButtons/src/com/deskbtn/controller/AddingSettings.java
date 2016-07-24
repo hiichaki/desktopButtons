@@ -8,7 +8,6 @@ import java.util.Iterator;
 
 import javax.swing.JFileChooser;
 
-import com.deskbtn.frame.MainFrame;
 import com.deskbtn.main.App;
 import com.deskbtn.model.BtnPropperties;
 import com.deskbtn.model.RoundButton;

@@ -24,16 +24,17 @@ public class App {
 	 * !!fileDialog 
 	 * !!saves 
 	 * !!settings 
-	 * settings interface 
-	 * !!color
-	 * size 
+	 * settings interface
+	 * !!color size 
 	 * !!form 
 	 * !!position 
 	 * labels 
 	 * !!remove/add 
-	 * drag and drop 
-	 * !!positioning open
-	 * dialogs count in raw
+	 * drag and drop
+	 * !!positioning 
+	 * open dialogs 
+	 * count 
+	 * in raw 
 	 * frames prop save
 	 */
 
@@ -55,6 +56,11 @@ public class App {
 	public static int screenWidth = (int) screenSize.getWidth();
 	public static int screenHeight = (int) screenSize.getHeight();
 
+	public static void resizeWindow(int inRaw) {
+		windowWidth = inRaw * 50;
+		AddingSettings.trigger();
+	}
+
 	public static boolean isPathExists(String file) {
 		return new File(homePath + file).exists();
 
@@ -72,42 +78,41 @@ public class App {
 		File theDir = new File(homePath);
 
 		if (!theDir.exists()) {
-		    boolean result = false;
+			boolean result = false;
 
-		    try{
-		        theDir.mkdir();
-		        result = true;
-		    } 
-		    catch(SecurityException se){
-		    }        
-		    if(result) {    
-//****************************************************************
-		        System.out.println("DIR created (App)");  
-		    }
+			try {
+				theDir.mkdir();
+				result = true;
+			} catch (SecurityException se) {
+			}
+			if (result) {
+				// ****************************************************************
+				System.out.println("DIR created (App)");
+			}
 		}
 	}
-	
+
 	public static void initSAVES() {
 		btnSAVES = BtnPropSerializing.getSAVES();
 		frameSAVES = FramePropSerializing.getSAVES();
-//****************************************************************
-				System.out.println("saves inited (App)");
+		// ****************************************************************
+		System.out.println("saves inited (App)");
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		createDir();
 		initSAVES();
 
 		try {
 			FramePropperties framePropperties = frameSAVES.getSaves().get("MainFrame");
-			mainFrame = new MainFrame(framePropperties); 
-//			AddingSettings.trigger();
-//****************************************************************
+			mainFrame = new MainFrame(framePropperties);
+			// AddingSettings.trigger();
+			// ****************************************************************
 			System.out.println("get frame position from save (App)");
 		} catch (ClassNotFoundException | IOException e) {
 			mainFrame = new MainFrame();
-//****************************************************************
+			// ****************************************************************
 			System.out.println("set default frame position (App)");
 		}
 
