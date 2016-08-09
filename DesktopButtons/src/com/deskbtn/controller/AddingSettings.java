@@ -57,7 +57,7 @@ public class AddingSettings {
 				
 				if(extension.equals("jar")) {
 					ProcessBuilder pb = new ProcessBuilder(file.getAbsolutePath(), "-jar", file.getName());
-					Process p = pb.start();
+					pb.start();
 				}
 
 			} catch (Exception ex) {
