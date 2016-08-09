@@ -25,6 +25,7 @@ public class App {
 	 * !!saves 
 	 * !!settings 
 	 * settings interface
+	 * all settings on one frame
 	 * !!color size 
 	 * !!form 
 	 * !!position 
